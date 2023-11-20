@@ -1,0 +1,39 @@
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-wrapper > form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.input-field {
+  border: 1px solid white;
+  width: 600px !important;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.input-field > input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-indent: 9px;
+  font-size: 16px;
+  padding-block: 10px;
+  flex-grow: 1;
+  color: white !important;
+}
+
+.input-field > input::placeholder {
+  color: white !important;
+}
+
+.input-field > img {
+  margin-inline-end: 10px;
+  cursor: pointer;
+}

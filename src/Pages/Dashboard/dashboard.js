@@ -5,7 +5,7 @@ import Rupee from "../../Images/rupee.png"
 import CustomInput from "../../Components/CustomInput"
 import PrimaryBtn from "../../Components/PrimaryBtn"
 
-const Dashboard = () => {
+const Dashboard = ({ setMessage, setMessageType }) => {
   const [dashboardData, setDashboardData] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isDiabled, setIsDisabled] = useState(false)
@@ -36,16 +36,26 @@ const Dashboard = () => {
   }
 
   const updateDashboardData = () => {
-    axios.put("https://stg.dhunjam.in/account/admin/4", {
-      charge_customers: dashboardData?.charge_customers,
-      amount: {
-        category_6: dashboardData?.amount?.category_6,
-        category_7: dashboardData?.amount?.category_7,
-        category_8: dashboardData?.amount?.category_8,
-        category_9: dashboardData?.amount?.category_9,
-        category_10: dashboardData?.amount?.category_10,
-      },
-    })
+    setIsDisabled(true)
+    axios
+      .put("https://stg.dhunjam.in/account/admin/4", {
+        charge_customers: dashboardData?.charge_customers,
+        amount: {
+          category_6: dashboardData?.amount?.category_6,
+          category_7: dashboardData?.amount?.category_7,
+          category_8: dashboardData?.amount?.category_8,
+          category_9: dashboardData?.amount?.category_9,
+          category_10: dashboardData?.amount?.category_10,
+        },
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          setMessage("Successfully Updated !")
+        }
+      })
+      .finally(() => {
+        setIsDisabled(false)
+      })
   }
 
   const handleChange = (e) => {

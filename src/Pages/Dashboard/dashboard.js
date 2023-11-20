@@ -9,6 +9,7 @@ const Dashboard = ({ setMessage, setMessageType }) => {
   const [dashboardData, setDashboardData] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isDiabled, setIsDisabled] = useState(false)
+  const [userId, setUserId] = useState(null)
 
   const maxValue = Math.max(
     dashboardData?.amount?.category_6,
@@ -18,10 +19,10 @@ const Dashboard = ({ setMessage, setMessageType }) => {
     dashboardData?.amount?.category_10
   )
 
-  const fetchDashboardData = () => {
+  const fetchDashboardData = (userId) => {
     setIsLoading(true)
     axios
-      .get("https://stg.dhunjam.in/account/admin/4")
+      .get(`https://stg.dhunjam.in/account/admin/${userId}`)
       .then((response) => {
         if (response.data.status == 200) {
           setDashboardData(response.data.data)
@@ -29,16 +30,18 @@ const Dashboard = ({ setMessage, setMessageType }) => {
       })
       .catch((error) => {
         console.log(error)
+        setMessage(error.message || "Something Went Wrong")
+        setMessageType("info")
       })
       .finally(() => {
         setIsLoading(false)
       })
   }
 
-  const updateDashboardData = () => {
+  const updateDashboardData = (userId) => {
     setIsDisabled(true)
     axios
-      .put("https://stg.dhunjam.in/account/admin/4", {
+      .put(`https://stg.dhunjam.in/account/admin/${userId}`, {
         charge_customers: dashboardData?.charge_customers,
         amount: {
           category_6: dashboardData?.amount?.category_6,
@@ -51,7 +54,12 @@ const Dashboard = ({ setMessage, setMessageType }) => {
       .then((response) => {
         if (response.status == 200) {
           setMessage("Successfully Updated !")
+          fetchDashboardData(userId)
         }
+      })
+      .catch((error) => {
+        setMessage(error.message || "Something went wrong")
+        setMessageType("info")
       })
       .finally(() => {
         setIsDisabled(false)
@@ -69,7 +77,9 @@ const Dashboard = ({ setMessage, setMessageType }) => {
   }
 
   useEffect(() => {
-    fetchDashboardData()
+    const userId = JSON.parse(localStorage.getItem("userId"))
+    fetchDashboardData(userId !== "undefined" ? userId : 4)
+    setUserId(userId !== "undefined" ? userId : 4)
   }, [])
 
   useEffect(() => {
@@ -193,7 +203,7 @@ const Dashboard = ({ setMessage, setMessageType }) => {
               </div>
             </div>
           )}
-          <PrimaryBtn text="Save" className="mt-30" onClick={updateDashboardData} disable={isDiabled} />
+          <PrimaryBtn text="Save" className="mt-30" onClick={() => updateDashboardData(userId)} disable={isDiabled} />
         </div>
       )}
     </div>

@@ -31,10 +31,10 @@ const Login = () => {
     <div className="dark-background minheight-100 login-wrapper">
       <form className="w-600">
         <h3 className="text-center mb-10 heading">Venue Admin Login</h3>
-        <div className="input-field">
+        <div className="input-field width-600">
           <input type="text" placeholder="Username" name="username" required value={userDetails.username} onChange={handleChange} />
         </div>
-        <div className="input-field">
+        <div className="input-field width-600">
           <input type="password" placeholder="Password" name="password" required value={userDetails.password} onChange={handleChange} ref={passwordRef} />
           <img src={imageSrc} alt="eye" height={"22px"} onClick={handleTogglePassword} />
         </div>

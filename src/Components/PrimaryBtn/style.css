@@ -7,4 +7,11 @@
   padding-block: 8px;
   border: none;
   outline: none;
+  cursor: pointer;
+}
+
+.disable-primary-btn {
+  background-color: rgba(103, 65, 217, 0.6) !important;
+  cursor: not-allowed;
+  color: gray !important;
 }

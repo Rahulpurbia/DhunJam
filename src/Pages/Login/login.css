@@ -12,7 +12,6 @@
 
 .input-field {
   border: 1px solid white;
-  width: 600px !important;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -27,6 +26,7 @@
   padding-block: 10px;
   flex-grow: 1;
   color: white !important;
+  max-width: 100%;
 }
 
 .input-field > input::placeholder {
@@ -36,4 +36,16 @@
 .input-field > img {
   margin-inline-end: 10px;
   cursor: pointer;
+}
+
+.disable-color {
+  color: grey !important;
+}
+
+.disable-custom-input {
+  border-color: grey !important;
+}
+
+.disable-custom-input input {
+  color: gray !important;
 }

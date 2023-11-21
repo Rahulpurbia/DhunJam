@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Link, HashRouter } from "react-router-dom"
 import "./App.css"
 import ProtectedRoute from "./Components/ProtectedRoute"
 import Dashboard from "./Pages/Dashboard/dashboard"
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/login" element={<Login setMessage={setMessage} setMessageType={setMessageType} />} />
           <Route path="/dashboard" element={<ProtectedRoute Component={<Dashboard setMessage={setMessage} setMessageType={setMessageType} />} />} />
@@ -32,7 +32,7 @@ function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       {message && <div className={`toast-message ${messageType}`}>{message}</div>}
     </div>
   )

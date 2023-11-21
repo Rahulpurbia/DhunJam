@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DhunJam/static/css/main.c86f00ef.css",
+    "main.js": "/DhunJam/static/js/main.847fc66b.js",
+    "static/js/787.d4aba7ab.chunk.js": "/DhunJam/static/js/787.d4aba7ab.chunk.js",
+    "index.html": "/DhunJam/index.html",
+    "main.c86f00ef.css.map": "/DhunJam/static/css/main.c86f00ef.css.map",
+    "main.847fc66b.js.map": "/DhunJam/static/js/main.847fc66b.js.map",
+    "787.d4aba7ab.chunk.js.map": "/DhunJam/static/js/787.d4aba7ab.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c86f00ef.css",
+    "static/js/main.847fc66b.js"
+  ]
+}

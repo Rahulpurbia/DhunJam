@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import PrimaryBtn from "../../Components/PrimaryBtn"
 import Eye from "../../Images/eye.png"
@@ -51,6 +51,11 @@ const Login = ({ setMessage, setMessageType }) => {
         setMessageType("danger")
       })
   }
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn")
+    isLoggedIn == "true" && navigate("/dashboard")
+  }, [])
 
   return (
     <div className="dark-background minheight-100 login-wrapper">

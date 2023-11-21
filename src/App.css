@@ -131,3 +131,7 @@ input[type="number"] {
 .text-black {
   color: black;
 }
+
+.border-pink {
+  border: 1px solid #f0c3f1 !important;
+}

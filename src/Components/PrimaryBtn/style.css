@@ -5,13 +5,18 @@
   width: 100%;
   border-radius: 10px;
   padding-block: 8px;
-  border: none;
+  border: 1px solid transparent;
   outline: none;
   cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.primary-btn:hover {
+  border: 1px solid #f0c3f1;
 }
 
 .disable-primary-btn {
   background-color: rgba(103, 65, 217, 0.6) !important;
   cursor: not-allowed;
-  color: gray !important;
+  color: #c2c2c2 !important;
 }

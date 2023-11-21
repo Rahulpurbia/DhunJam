@@ -33,19 +33,23 @@
   color: white !important;
 }
 
+input[type="radio"] {
+  accent-color: var(--primary-color);
+}
+
 .input-field > img {
   margin-inline-end: 10px;
   cursor: pointer;
 }
 
 .disable-color {
-  color: grey !important;
+  color: #c2c2c2 !important;
 }
 
 .disable-custom-input {
-  border-color: grey !important;
+  border-color: #c2c2c2 !important;
 }
 
 .disable-custom-input input {
-  color: gray !important;
+  color: #c2c2c2 !important;
 }

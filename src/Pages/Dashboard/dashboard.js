@@ -10,6 +10,7 @@ const Dashboard = ({ setMessage, setMessageType }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isDiabled, setIsDisabled] = useState(false)
   const [userId, setUserId] = useState(null)
+  const [saveClicked, setSaveClicked] = useState(false)
 
   const maxValue = Math.max(
     dashboardData?.amount?.category_6,
@@ -203,7 +204,15 @@ const Dashboard = ({ setMessage, setMessageType }) => {
               </div>
             </div>
           )}
-          <PrimaryBtn text="Save" className="mt-30" onClick={() => updateDashboardData(userId)} disable={isDiabled} />
+          <PrimaryBtn
+            text="Save"
+            className={`mt-30 ${saveClicked ? "border-pink" : ""}`}
+            onClick={() => {
+              updateDashboardData(userId)
+              setSaveClicked(true)
+            }}
+            disable={isDiabled || !dashboardData?.charge_customers}
+          />
         </div>
       )}
     </div>
